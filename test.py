@@ -131,3 +131,14 @@ def always_on(monkeypatch):
 def test_csv_reader():
   """Note how this test doesn't specify a fixture because the fixture 'always_on' has autouse=True"""
   assert csv_reader() == "it,is,a,csv,file"
+
+@pytest.mark.parametrize("child, adult",
+                         [
+                           ["kitten", "cat"],
+                           ["puppy", "dog"],
+                           ["hatchling", "alligator"],
+                           ["cub", "bear"],
+                           ["caterpillar", "butterfly"],
+                          ])
+def test_court_list(child, adult):
+  assert adult < child
